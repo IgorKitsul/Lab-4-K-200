@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class MatrixTask {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter - вихiд з програми");
+
+       
+        System.out.print("Введiть розмiрнiсть матрицi n: ");
+        int n = scanner.nextInt();
+        int[][] A = new int[n][n];
+
+        
+        System.out.println("Введiть елементи матрицi:");
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                A[i][j] = scanner.nextInt();
+
+
+        int max = A[0][0];
+        int maxRow = 0;
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (A[i][j] > max) {
+                    max = A[i][j];
+                    maxRow = i;
+                }
+
+       
+        int sideDiagonalSum = 0;
+        for (int i = 0; i < n; i++)
+            sideDiagonalSum += A[i][n - 1 - i];
+
+        
+        for (int j = 0; j < n; j++)
+            A[maxRow][j] = sideDiagonalSum;
+
+        System.out.println("Результ :");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++)
+                System.out.print(A[i][j] + "\t");
+            System.out.println();
+        }
+    }
+}
